@@ -67,15 +67,18 @@
 
     async function sendMsg() {
       if(liff.getContext().type !== "none") {
-        
-        await liff.sendMessages([
-          {
-          "type":"sticker",
-          "stickerId": 1991,
-          "packageId": 446
-          }
-        ]);
-        alert("ส่งข้อมูลสำเร็จ");
+        try {
+          await liff.sendMessages([
+            {
+              "type": "sticker",
+              "stickerId": 1991,
+              "packageId": 446
+            }
+          ]);
+          alert("ส่งข้อมูลสำเร็จ");
+        } catch (error) {
+          console.error("เกิดข้อผิดพลาดในการส่งข้อความ:", error);
+        }
       }
     }
 
@@ -85,7 +88,6 @@
       document.getElementById("utouId").append(liff.getContext().utouId)
       document.getElementById("roomId").append(liff.getContext().roomId)
       document.getElementById("groupId").append(liff.getContext().groupId)
-      
     }
 
     async function getUserProfile() {
@@ -95,7 +97,6 @@
       document.getElementById("statusMessage").append(profile.statusMessage)
       document.getElementById("displayName").append(profile.displayName)
       document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
-
     }
 
     function getEnvironment() {
