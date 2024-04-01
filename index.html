@@ -55,6 +55,7 @@
     }
 
     function closed() {
+      liff.closedWindow()
     }
 
     async function scanCode() {
@@ -128,11 +129,15 @@
 
     async function main() {
       await liff.init({ liffId: "2004104715-EzxeKV1P" })
-       getEnvironment()
+       document.getElementById("isLoggedIn").append(liff.isLoggedIn)
+       if (liff.isLoggedIn()){
+        getEnvironment()
        getUserProfile()
        getContext()
        getFriendship()
        createUniversalLink()
+       }
+
     }
     main()
   </script>
