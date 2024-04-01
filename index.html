@@ -72,7 +72,7 @@
       liff.closedWindow()
     }
 
-    async function scanCode() {
+    async function scanCodeV2() {
       const result = await liff.scanCode()
       document.getElementById("scanCode").append(result.value)
     }
